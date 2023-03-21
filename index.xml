@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2023 [Hugo Ladret](http://hugoladret.github.io)</copyright>
-    <lastBuildDate>Mon, 11 Mar 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugoladret.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 21 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://hugoladret.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>We have litoff !</title>
+      <link>https://hugoladret.github.io/post/emoji-support/</link>
+      <pubDate>Tue, 21 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugoladret.github.io/post/emoji-support/</guid>
+      <description>&lt;p&gt;TODO first post&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Resilience to sensory variance in the primary visual cortex</title>
+      <link>https://hugoladret.github.io/publications/ladret_et_al_variance_v1/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugoladret.github.io/publications/ladret_et_al_variance_v1/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://hugoladret.github.io/publications/ladret_et_al_variance_V1.pdf&#34;&gt;&lt;i class=&#34;fa-solid fa-file-pdf&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://scholar.googleusercontent.com/scholar.bib?q=info:Ct1RvT8fLUYJ:scholar.google.com/&amp;amp;output=citation&amp;amp;scisdr=CgUKAuoEEOK9kuLT8BM:AAGBfm0AAAAAZBnW6BPlookfQHl0B6kWjvJ5eZ4wCVTg&amp;amp;scisig=AAGBfm0AAAAAZBnW6IHotqOgsEUd--ShUD7ZISMhaOsH&amp;amp;scisf=4&amp;amp;ct=citation&amp;amp;cd=-1&amp;amp;hl=fr&#34;&gt;&lt;i class=&#34;fa-solid fa-quote-left&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://www.biorxiv.org/content/10.1101/2021.03.30.437692v5&#34;&gt;&lt;i class=&#34;ai ai-biorxiv&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Corticothalamic Projections Gate Alpha Rhythms in the Pulvinar</title>
+      <link>https://hugoladret.github.io/publications/cortes_et_al_pulvinar/</link>
+      <pubDate>Fri, 01 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugoladret.github.io/publications/cortes_et_al_pulvinar/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fncel.2021.787170/full&#34;&gt;&lt;i class=&#34;fa-solid fa-book&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://hugoladret.github.io/publications/cortes_et_al_pulvinar.pdf&#34;&gt;&lt;i class=&#34;fa-solid fa-file-pdf&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://scholar.googleusercontent.com/scholar.bib?q=info:2rWuhDabRecJ:scholar.google.com/&amp;amp;output=citation&amp;amp;scisdr=CgUKAuoEEOK9kuLcTUA:AAGBfm0AAAAAZBnZVUBkRbCvg2xAo80_7651biNTTXmq&amp;amp;scisig=AAGBfm0AAAAAZBnZVWxcvy0mz_lUiJM_cNQ6rhQTTgEy&amp;amp;scisf=4&amp;amp;ct=citation&amp;amp;cd=-1&amp;amp;hl=fr&#34;&gt;&lt;i class=&#34;fa-solid fa-quote-left&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://www.biorxiv.org/content/10.1101/2021.09.10.459796v1&#34;&gt;&lt;i class=&#34;ai ai-biorxiv&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    
     <item>
       <title></title>
       <link>https://hugoladret.github.io/archives/</link>
@@ -15,51 +42,6 @@
       
       <guid>https://hugoladret.github.io/archives/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Markdown Syntax Guide</title>
-      <link>https://hugoladret.github.io/post/markdown-syntax/</link>
-      <pubDate>Mon, 11 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hugoladret.github.io/post/markdown-syntax/</guid>
-      <description>&lt;p&gt;This article offers a sample of basic Markdown syntax that can be used in Hugo content files, also it shows whether basic HTML elements are decorated with CSS in a Hugo theme.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Rich Content</title>
-      <link>https://hugoladret.github.io/post/rich-content/</link>
-      <pubDate>Sun, 10 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hugoladret.github.io/post/rich-content/</guid>
-      <description>&lt;p&gt;Hugo ships with several &lt;a href=&#34;https://gohugo.io/content-management/shortcodes/#use-hugos-built-in-shortcodes&#34;&gt;Built-in Shortcodes&lt;/a&gt; for rich content, along with a &lt;a href=&#34;https://gohugo.io/about/hugo-and-gdpr/&#34;&gt;Privacy Config&lt;/a&gt; and a set of Simple Shortcodes that enable static and no-JS versions of various social media embeds.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Placeholder Text</title>
-      <link>https://hugoladret.github.io/post/placeholder-text/</link>
-      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hugoladret.github.io/post/placeholder-text/</guid>
-      <description>&lt;p&gt;Lorem est tota propiore conpellat pectoribus de pectora summo.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Math Typesetting</title>
-      <link>https://hugoladret.github.io/post/math-typesetting/</link>
-      <pubDate>Fri, 08 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hugoladret.github.io/post/math-typesetting/</guid>
-      <description>&lt;p&gt;Mathematical notation in a Hugo project can be enabled by using third party JavaScript libraries.&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>Emoji Support</title>
-      <link>https://hugoladret.github.io/post/emoji-support/</link>
-      <pubDate>Tue, 05 Mar 2019 00:00:00 +0000</pubDate>
-      
-      <guid>https://hugoladret.github.io/post/emoji-support/</guid>
-      <description>&lt;p&gt;Emoji can be enabled in a Hugo project in a number of ways.&lt;/p&gt;</description>
     </item>
     
     <item>
