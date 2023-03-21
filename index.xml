@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo Ladret&#39;s scientific ramblings - UNDER CONSTRUCTION&gt;</title>
+    <title>Hugo Ladret&#39;s scientific ramblings &gt; UNDER CONSTRUCTION &lt;</title>
     <link>https://hugoladret.github.io/</link>
-    <description>Recent content on Hugo Ladret&#39;s scientific ramblings - UNDER CONSTRUCTION&gt;</description>
+    <description>Recent content on Hugo Ladret&#39;s scientific ramblings &gt; UNDER CONSTRUCTION &lt;</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>© 2023 [Hugo Ladret](http://hugoladret.github.io)</copyright>
@@ -63,14 +63,14 @@
     </item>
     
     <item>
-      <title>About</title>
+      <title>Hi !</title>
       <link>https://hugoladret.github.io/about/</link>
-      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://hugoladret.github.io/about/</guid>
-      <description>Written in Go, Hugo is an open source static site generator available under the Apache Licence 2.0. Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.
-Hugo makes use of a variety of open source projects including:
-https://github.com/yuin/goldmark https://github.</description>
+      <description>Thanks for stopping by my corner of the Internet.
+Who am I ? I&amp;rsquo;m Hugo, a PhD student researching predictive coding, an influential brain theory that promises to account for the many seemingly disparate results neuroscientists have gathered over decades of experiments.
+I&amp;rsquo;m a neurobiologist by training, but I believe no good science can be done without a theory-driven approach. My experimental work is mostly about vision, while my theoreotical interests are about anything neural network-related.</description>
     </item>
     
   </channel>
