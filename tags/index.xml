@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Hugo Ladret&#39;s scientific ramblings &gt; UNDER CONSTRUCTION &lt;</title>
+    <title>Tags on Hugo Ladret&#39;s scientific ramblings</title>
     <link>https://hugoladret.github.io/tags/</link>
-    <description>Recent content in Tags on Hugo Ladret&#39;s scientific ramblings &gt; UNDER CONSTRUCTION &lt;</description>
+    <description>Recent content in Tags on Hugo Ladret&#39;s scientific ramblings</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>© 2023 [Hugo Ladret](http://hugoladret.github.io)</copyright>
-    <lastBuildDate>Tue, 21 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://hugoladret.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>emoji</title>
-      <link>https://hugoladret.github.io/tags/emoji/</link>
-      <pubDate>Tue, 21 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://hugoladret.github.io/tags/emoji/</guid>
-      <description></description>
-    </item>
-    
+    <copyright>© 2023 [Hugo Ladret](http://hugoladret.github.io)</copyright><atom:link href="https://hugoladret.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>index</title>
       <link>https://hugoladret.github.io/tags/index/</link>

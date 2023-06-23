@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><title>Getting single neurons with Utah arrays in V1 #ephys #code &ndash; Hugo Ladret&#39;s scientific ramblings</title>
+<meta name="description" content="PhD Student 
+ computational neuroscience &#43; vision 
+
+&lt;i class=&#34;fa-solid fa-map-location-dot&#34;&gt;&lt;/i&gt; [Marseille](https://www.int.univ-amu.fr/recherche/equipes/neopto-2)
+&#43;
+[Montreal](https://www.opto.umontreal.ca/neurosciences/en/index.html)">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://hugoladret.github.io/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://hugoladret.github.io/css/risotto.css">
+<link rel="stylesheet" href="https://hugoladret.github.io/css/custom.css">
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><h1 class="page__logo"><a href="https://hugoladret.github.io/" class="page__logo-inner">Hugo Ladret&#39;s scientific ramblings</a></h1>
+<nav class="page__nav main-nav">
+    <ul>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://hugoladret.github.io/about/" title="">./About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://hugoladret.github.io/publications/" title="./papers/">./papers/</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item active" href="https://hugoladret.github.io/post/" title="./posts/">./posts/</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Getting single neurons with Utah arrays in V1 #ephys #code</h1>
+    </header>
+    <div class="content__body">
+        <h1 id="the-problem">The problem</h1>
+<p>Utah arrays implanted in the primary visual cortex are facing the double challenge of recording a dense cortical structure, with an impedance more suited to multi-units recording. This makes it hard to obtain single unit activity (SUA), especially when the array has been implanted for quite some time.
+Even with the advent of high throughput template matching spike sorter (i.e. <a href="https://github.com/MouseLand/Kilosort">Kilosort</a>), getting some SUA from large arrays is not trivially simple.
+I&rsquo;ve been playing around with Kilosort 3 to get some nice SUA, and while there is no such thing as a magic combination of parameters, here are a few useful tips.</p>
+<h1 id="solution-part-one">Solution part one</h1>
+<p>First things first, install Kilosort 3 following the <a href="https://github.com/MouseLand/Kilosort#installation">instructions</a>.</p>
+<ol>
+<li>Generate a channel map that linearizes the Utah array, as we don&rsquo;t really care about geometry here and Utah contact sites a very distant from one another :</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-matlab" data-lang="matlab"><span style="display:flex;"><span>Nchannels = <span style="color:#ae81ff">128</span>;
+</span></span><span style="display:flex;"><span>connected = true(Nchannels, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>chanMap   = <span style="color:#ae81ff">1</span>:Nchannels;
+</span></span><span style="display:flex;"><span>chanMap0ind = chanMap <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>xcoords   = ones(Nchannels,<span style="color:#ae81ff">1</span>)<span style="color:#f92672">*</span><span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>ycoords   = [<span style="color:#ae81ff">1</span>:Nchannels]<span style="color:#f92672">&#39;*</span><span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span>kcoords   = [<span style="color:#ae81ff">1</span>:Nchannels]<span style="color:#f92672">&#39;</span>; <span style="color:#75715e">% grouping of channels (i.e. tetrode groups)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fs = <span style="color:#ae81ff">30000</span>; <span style="color:#75715e">% sampling frequency</span>
+</span></span><span style="display:flex;"><span>save(<span style="color:#e6db74">&#39;./linear_utah_array.mat&#39;</span>, <span style="color:#75715e">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;chanMap&#39;</span>,<span style="color:#e6db74">&#39;connected&#39;</span>, <span style="color:#e6db74">&#39;xcoords&#39;</span>, <span style="color:#e6db74">&#39;ycoords&#39;</span>, <span style="color:#e6db74">&#39;kcoords&#39;</span>, <span style="color:#e6db74">&#39;chanMap0ind&#39;</span>, <span style="color:#e6db74">&#39;fs&#39;</span>)
+</span></span></code></pre></div><ol start="2">
+<li>Turn off drift correction in &ldquo;main_kilosort3.m&rdquo;, which is useless in the given geometry :</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-matlab" data-lang="matlab"><span style="display:flex;"><span>ops.nblocks    = <span style="color:#ae81ff">0</span>; <span style="color:#75715e">% blocks for registration. 0 turns it off, 1 does rigid registration. Replaces &#34;datashift&#34; optio</span>
+</span></span></code></pre></div><p>These two simple steps should already vastly improve Kilosort 3&rsquo;s compatibility with Utah array recordings.</p>
+<h1 id="soltuion-part-two">Soltuion part two</h1>
+<p>It&rsquo;s also a decent idea to have a look at the role of the parameters when looking for SUAs. Kilosort&rsquo;s code is easy to integrate into a parameter scan. Rewrite main_kilosort3.m into :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-matlab" data-lang="matlab"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">main_ks3_scan</span>(ops)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">% Add paths</span>
+</span></span><span style="display:flex;"><span>    addpath(genpath(<span style="color:#e6db74">&#39;your_path_to_ks_folder&#39;</span>)) <span style="color:#75715e">% path to kilosort folder</span>
+</span></span><span style="display:flex;"><span>    addpath(<span style="color:#e6db74">&#39;your_path_to_npy_matlab&#39;</span>) <span style="color:#75715e">% for converting to Phy</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">% Set paths</span>
+</span></span><span style="display:flex;"><span>    rootZ = <span style="color:#e6db74">&#39;.\&#39;</span>; <span style="color:#75715e">% the raw data binary file is in this folder</span>
+</span></span><span style="display:flex;"><span>    rootH = <span style="color:#e6db74">&#39;.\&#39;</span>; <span style="color:#75715e">% path to temporary binary file (same size as data, should be on fast SSD)</span>
+</span></span><span style="display:flex;"><span>    pathToYourConfigFile = <span style="color:#e6db74">&#39;.\&#39;</span>; <span style="color:#75715e">% take from Github folder and put it somewhere else (together with the master_file)</span>
+</span></span><span style="display:flex;"><span>    chanMapFile = <span style="color:#e6db74">&#39;linear_utah_array.mat&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ops.trange    = [<span style="color:#ae81ff">0</span> Inf]; <span style="color:#75715e">% time range to sort</span>
+</span></span><span style="display:flex;"><span>    ops.NchanTOT  = <span style="color:#ae81ff">128</span>; <span style="color:#75715e">% total number of channels in your recording</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ops.fproc   = fullfile(rootH, <span style="color:#e6db74">&#39;temp_wh.dat&#39;</span>); <span style="color:#75715e">% proc file on a fast SSD</span>
+</span></span><span style="display:flex;"><span>    ops.chanMap = fullfile(pathToYourConfigFile, chanMapFile);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">% main parameter changes from Kilosort2 to v2.5</span>
+</span></span><span style="display:flex;"><span>    ops.sig        = <span style="color:#ae81ff">20</span>;  <span style="color:#75715e">% spatial smoothness constant for registration</span>
+</span></span><span style="display:flex;"><span>    ops.fshigh     = <span style="color:#ae81ff">300</span>; <span style="color:#75715e">% high-pass more aggresively</span>
+</span></span><span style="display:flex;"><span>    ops.nblocks    = <span style="color:#ae81ff">0</span>; <span style="color:#75715e">% blocks for registration. 0 turns it off, 1 does rigid registration. Replaces &#34;datashift&#34; option.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">% Print data location</span>
+</span></span><span style="display:flex;"><span>    fprintf(<span style="color:#e6db74">&#39;Looking for data inside %s \n&#39;</span>, rootZ)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">% Check for channel map file</span>
+</span></span><span style="display:flex;"><span>    fs = dir(fullfile(rootZ, <span style="color:#e6db74">&#39;chan*.mat&#39;</span>));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">~</span>isempty(fs)
+</span></span><span style="display:flex;"><span>        ops.chanMap = fullfile(rootZ, fs(<span style="color:#ae81ff">1</span>).name);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">% Find the binary file</span>
+</span></span><span style="display:flex;"><span>    fs          = [dir(fullfile(rootZ, <span style="color:#e6db74">&#39;*.bin&#39;</span>)) dir(fullfile(rootZ, <span style="color:#e6db74">&#39;*.dat&#39;</span>))];
+</span></span><span style="display:flex;"><span>    ops.fbinary = fullfile(rootZ, fs(<span style="color:#ae81ff">1</span>).name);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">% Run the algorithm steps</span>
+</span></span><span style="display:flex;"><span>    rez                = preprocessDataSub(ops);
+</span></span><span style="display:flex;"><span>    rez                = datashift2(rez, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>    [rez, st3, tF]     = extract_spikes(rez);
+</span></span><span style="display:flex;"><span>    rez                = template_learning(rez, tF, st3);
+</span></span><span style="display:flex;"><span>    [rez, st3, tF]     = trackAndSort(rez);
+</span></span><span style="display:flex;"><span>    rez                = final_clustering(rez, tF, st3);
+</span></span><span style="display:flex;"><span>    rez                = find_merges(rez, <span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">% Save results to Phy</span>
+</span></span><span style="display:flex;"><span>    rootZ = fullfile(rootZ, <span style="color:#e6db74">&#39;kilosort3&#39;</span>);
+</span></span><span style="display:flex;"><span>    mkdir(rootZ)
+</span></span><span style="display:flex;"><span>    rezToPhy2(rez, rootZ);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>Similarly, rewrite the StandardConfig_MOVEME file into a function, then write a new matlab script :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-matlab" data-lang="matlab"><span style="display:flex;"><span><span style="color:#75715e">% Load the default parameters from StandardConfig_MOVEME.m</span>
+</span></span><span style="display:flex;"><span>ops = StandardConfig_MOVEME();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% Define the range of values for the lam, ThPre, and Th parameters</span>
+</span></span><span style="display:flex;"><span>lam_vals = [<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">20</span>, <span style="color:#ae81ff">50</span>];
+</span></span><span style="display:flex;"><span>ThPre_vals = [<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">12</span>];
+</span></span><span style="display:flex;"><span>Th_vals = [<span style="color:#ae81ff">8</span> <span style="color:#ae81ff">4</span>; <span style="color:#ae81ff">10</span> <span style="color:#ae81ff">4</span>; <span style="color:#ae81ff">12</span> <span style="color:#ae81ff">4</span>; <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">4</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% Initialize a structure to store the results</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% Initialize the result index</span>
+</span></span><span style="display:flex;"><span>result_idx = <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">% Perform the parameter sweep</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> lam_idx = <span style="color:#ae81ff">1</span>:length(lam_vals)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> ThPre_idx = <span style="color:#ae81ff">1</span>:length(ThPre_vals)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> Th_idx = <span style="color:#ae81ff">1</span>:size(Th_vals, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">% Update the lam, ThPre, and Th parameter values</span>
+</span></span><span style="display:flex;"><span>            ops.lam = lam_vals(lam_idx);
+</span></span><span style="display:flex;"><span>            ops.ThPre = ThPre_vals(ThPre_idx);
+</span></span><span style="display:flex;"><span>            ops.Th = Th_vals(Th_idx, :);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">% Run the mainFunction with the updated ops and store the results</span>
+</span></span><span style="display:flex;"><span>            main_ks3_scan(ops);
+</span></span><span style="display:flex;"><span>            fprintf(<span style="color:#e6db74">&#39;lam: %d, ThPre: %d, Th: [%d, %d]\n&#39;</span>, ops.lam, ops.ThPre, ops.Th(<span style="color:#ae81ff">1</span>), ops.Th(<span style="color:#ae81ff">2</span>));
+</span></span><span style="display:flex;"><span>            fprintf(<span style="color:#e6db74">&#39;--------------&#39;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>This yields a number of good clusters w.r.t. spike-sorting parameters. However, more is not always better, as instances where the number of clusters is maximum are often obtained through low stringency on the thresholds, and end up giving poorly clustered units with few spikes. Similarly, with a low lam parameter, low amplitude (artifactual ?) clusters tend to show up <em>a lot</em>.</p>
+<p><img src="https://hugoladret.github.io/post/imgs/SUA_KS3_1.png" alt="Bad SUAS"></p>
+<p>By manually visualizing the clusters with <a href="https://phy.readthedocs.io/en/latest/">Phy</a>, I ended up settling with parameters lam = 10 ; ThPre = 10 ; Th = [12 6], which yields nicer single units :</p>
+<p><img src="https://hugoladret.github.io/post/imgs/SUA_KS3_2.png" alt="Better SUAS"></p>
+<p>This is not a miracle solution, but it ends up offering similar performance to what Kilosort 2 used to output, whilst doing a better job at tracking the MUAs than KS2.
+If a miracle solution does show up, I&rsquo;ll make another post !</p>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+<div class="aside__about">
+    <img class="about__logo" src="https://hugoladret.github.io/images/brain.svg" alt="Logo">
+<h1 class="about__title">Hugo Ladret</h1>
+<p class="about__description"><p>PhD Student
+computational neuroscience + vision</p>
+<p><i class="fa-solid fa-map-location-dot"></i> <a href="https://www.int.univ-amu.fr/recherche/equipes/neopto-2">Marseille</a>
++
+<a href="https://www.opto.umontreal.ca/neurosciences/en/index.html">Montreal</a></p>
+</p>
+</div>
+
+
+<ul class="aside__social-links">
+    
+    <li>
+        <a href="https://github.com/hugoladret/" rel="me" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://orcid.org/0000-0001-7999-3751" rel="me" aria-label="ORCID" title="ORCID"><i class="ai ai-orcid" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://scholar.google.com/citations?user=n6dvyjwAAAAJ&amp;hl=en&amp;oi=ao" rel="me" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://twitter.com/hugoladret/" rel="me" aria-label="Twitter " title="Twitter "><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p> &#39;We should all do what, in the long run, gives us joy, even if it is only picking grapes or sorting the spikes.&#39; &gt; E. B. White, 1989 (approximative quote)
+</p>
+    
+        <p>
+            By Hugo Ladret, 
+            2023-04-16
+        </p>
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright">© 2023 <a href="http://hugoladret.github.io">Hugo Ladret</a></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

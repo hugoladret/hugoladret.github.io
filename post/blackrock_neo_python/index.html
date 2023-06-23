@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><title>Extracting data from Blackrock files in Python #ephys #code &ndash; Hugo Ladret&#39;s scientific ramblings</title>
+<meta name="description" content="PhD Student 
+ computational neuroscience &#43; vision 
+
+&lt;i class=&#34;fa-solid fa-map-location-dot&#34;&gt;&lt;/i&gt; [Marseille](https://www.int.univ-amu.fr/recherche/equipes/neopto-2)
+&#43;
+[Montreal](https://www.opto.umontreal.ca/neurosciences/en/index.html)">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://hugoladret.github.io/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://hugoladret.github.io/css/risotto.css">
+<link rel="stylesheet" href="https://hugoladret.github.io/css/custom.css">
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><h1 class="page__logo"><a href="https://hugoladret.github.io/" class="page__logo-inner">Hugo Ladret&#39;s scientific ramblings</a></h1>
+<nav class="page__nav main-nav">
+    <ul>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://hugoladret.github.io/about/" title="">./About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://hugoladret.github.io/publications/" title="./papers/">./papers/</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item active" href="https://hugoladret.github.io/post/" title="./posts/">./posts/</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>Extracting data from Blackrock files in Python #ephys #code</h1>
+    </header>
+    <div class="content__body">
+        <h1 id="the-problem">The problem</h1>
+<p>Recently, I&rsquo;ve had the pleasure to get some data from to the very talented <a href="https://scholar.google.ca/citations?user=5kBTdH0AAAAJ&amp;hl=fr&amp;oi=ao">Paolo Papale</a> working in <a href="https://nin.nl/research-groups/roelfsema/">Pieter Roelfsema&rsquo;s lab</a>. Both of them kindly sent me some electrophysiological data from their Utah array recordings. Their massively parallel recordings (about <a href="https://www.researchgate.net/publication/359161666_1024-channel_electrophysiological_recordings_in_macaque_V1_and_V4_during_resting_state">1000 recording sites in visual cortices</a>) are acquired and digitized through a Blackock Neurotech board that outputs the data in a proprietary <a href="https://blackrockneurotech.com/research/wp-content/ifu/LB-0023-7.00_NEV_File_Format.pdf">.nev format</a>.</p>
+<p>Rather than bother them for access to properitary tools or in-house solutions, I wanted to play around with the data on my own</p>
+<h1 id="the-solution">The solution</h1>
+<p>A very simple solution relies on the brillant <a href="https://github.com/NeuralEnsemble/python-neo">Python NEO package</a>. It becomes trivially simple to load data with their BlackRock I/O interface :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> neo.rawio <span style="color:#f92672">import</span> BlackrockRawIO
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>recording_path <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;./path_to_recording/path_to_subfolder&#39;</span>
+</span></span><span style="display:flex;"><span>now <span style="color:#f92672">=</span> time<span style="color:#f92672">.</span>time()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;&gt; Loading array : </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">/instance1_B001.nev . . .&#39;</span> <span style="color:#f92672">%</span> (recording_path))
+</span></span><span style="display:flex;"><span>reader <span style="color:#f92672">=</span> BlackrockRawIO(filename<span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">/instance1_B001.nev&#39;</span> <span style="color:#f92672">%</span> (recording_path))
+</span></span><span style="display:flex;"><span>reader<span style="color:#f92672">.</span>parse_header()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Getting analog signals . . .&#39;</span>)
+</span></span><span style="display:flex;"><span>signals <span style="color:#f92672">=</span> reader<span style="color:#f92672">.</span>get_analogsignal_chunk(block_index<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, seg_index<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, i_start<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, i_stop<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, channel_indexes<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)
+</span></span><span style="display:flex;"><span>signals <span style="color:#f92672">=</span> signals[:,<span style="color:#ae81ff">0</span>:<span style="color:#ae81ff">128</span>] <span style="color:#75715e">#  here an instance has 144 channels, but the last 16 are not signals</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Writing to disk . . . &#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>isfile(<span style="color:#e6db74">&#39;./raw_array_1.bin&#39;</span>) : os<span style="color:#f92672">.</span>remove(<span style="color:#e6db74">&#39;./raw_array_1.bin&#39;</span>) <span style="color:#75715e"># better safe than sorry</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> open (<span style="color:#e6db74">&#39;./raw_array_1.bin&#39;</span> <span style="color:#f92672">%</span> instance,<span style="color:#e6db74">&#39;wb&#39;</span>) <span style="color:#66d9ef">as</span> FileToWrite:
+</span></span><span style="display:flex;"><span>    signals<span style="color:#f92672">.</span>tofile(FileToWrite)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Total time : </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span> <span style="color:#f92672">%</span> (time<span style="color:#f92672">.</span>time() <span style="color:#f92672">-</span> now))
+</span></span></code></pre></div><p>which gives a .bin file that can easily be loaded for further processing, for example using Kilosort for spike sorting.</p>
+<p>Simple as that ! For a .nev file of half a gigabyte, it takes less than a minute on a modern setup to convert everything to a bin file.</p>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+<div class="aside__about">
+    <img class="about__logo" src="https://hugoladret.github.io/images/brain.svg" alt="Logo">
+<h1 class="about__title">Hugo Ladret</h1>
+<p class="about__description"><p>PhD Student
+computational neuroscience + vision</p>
+<p><i class="fa-solid fa-map-location-dot"></i> <a href="https://www.int.univ-amu.fr/recherche/equipes/neopto-2">Marseille</a>
++
+<a href="https://www.opto.umontreal.ca/neurosciences/en/index.html">Montreal</a></p>
+</p>
+</div>
+
+
+<ul class="aside__social-links">
+    
+    <li>
+        <a href="https://github.com/hugoladret/" rel="me" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://orcid.org/0000-0001-7999-3751" rel="me" aria-label="ORCID" title="ORCID"><i class="ai ai-orcid" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://scholar.google.com/citations?user=n6dvyjwAAAAJ&amp;hl=en&amp;oi=ao" rel="me" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://twitter.com/hugoladret/" rel="me" aria-label="Twitter " title="Twitter "><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p> &#39;People are so into digital recording now they forgot how easy analog recording can be.&#39; &gt; Dave Grohl
+</p>
+    
+        <p>
+            By Hugo Ladret, 
+            2023-04-17
+        </p>
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+</p>
+<br /><br />
+<p class="copyright">© 2023 <a href="http://hugoladret.github.io">Hugo Ladret</a></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>
