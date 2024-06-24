@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head><title>Cortical recurrence supports resilience to sensory variance in the primary visual cortex &ndash; Hugo Ladret&#39;s scientific ramblings</title>
-<meta name="description" content="PhD Student 
- computational neuroscience &#43; vision 
-
-&lt;i class=&#34;fa-solid fa-map-location-dot&#34;&gt;&lt;/i&gt; [Marseille](https://www.int.univ-amu.fr/recherche/equipes/neopto-2)
-&#43;
-[Montreal](https://www.opto.umontreal.ca/neurosciences/en/index.html)">
+    <head><title>[2023] [model] [data] -- Cortical recurrence supports resilience to sensory variance in the primary visual cortex &ndash; A blog about scientific shenanigans</title>
+<meta name="description" content="Postdoctoral researcher Neuroscience &lt;i class=&#34;fa-solid fa-map-location-dot&#34;&gt;&lt;/i&gt; [Basel](https://www.apredictiveprocessinglab.org/)">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8"/>
@@ -23,12 +18,18 @@
 <link rel="stylesheet" href="https://hugoladret.github.io/css/palettes/base16-dark.css">
 <link rel="stylesheet" href="https://hugoladret.github.io/css/risotto.css">
 <link rel="stylesheet" href="https://hugoladret.github.io/css/custom.css">
+
+
+<script type="text/javascript" src="/js/mathjax-config.js"></script>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
 </head>
 
     <body>
         <div class="page">
 
-            <header class="page__header"><h1 class="page__logo"><a href="https://hugoladret.github.io/" class="page__logo-inner">Hugo Ladret&#39;s scientific ramblings</a></h1>
+            <header class="page__header"><h1 class="page__logo"><a href="https://hugoladret.github.io/" class="page__logo-inner">A blog about scientific shenanigans</a></h1>
 <nav class="page__nav main-nav">
     <ul>
     
@@ -46,46 +47,46 @@
 
             <section class="page__body">
     <header class="content__header">
-        <h1>Cortical recurrence supports resilience to sensory variance in the primary visual cortex</h1>
+        <h1>[2023] [model] [data] &ndash; Cortical recurrence supports resilience to sensory variance in the primary visual cortex</h1>
     </header>
     <div class="content__body">
-        <p><a href="https://hugoladret.github.io/publications/ladret_et_al_variance_V1.pdf"><i class="fa-solid fa-file-pdf"></i></a> - <a href="https://scholar.googleusercontent.com/scholar.bib?q=info:Ct1RvT8fLUYJ:scholar.google.com/&amp;output=citation&amp;scisdr=CgUKAuoEEOK9kuLT8BM:AAGBfm0AAAAAZBnW6BPlookfQHl0B6kWjvJ5eZ4wCVTg&amp;scisig=AAGBfm0AAAAAZBnW6IHotqOgsEUd--ShUD7ZISMhaOsH&amp;scisf=4&amp;ct=citation&amp;cd=-1&amp;hl=fr"><i class="fa-solid fa-quote-left"></i></a> - <a href="https://www.biorxiv.org/content/10.1101/2021.03.30.437692v5"><i class="ai ai-biorxiv"></i></a></p>
-<!--more-->
+        <p><a href="https://www.nature.com/articles/s42003-023-05042-3"><i class="fa-solid fa-newspaper"></i></a> - <a href="https://hugoladret.github.io/publications/ladret_et_al_variance_V1.pdf"><i class="fa-solid fa-file-pdf"></i></a> - <a href="https://scholar.google.com/scholar?hl=en&amp;as_sdt=0%2C5&amp;q=cortical+recurrence+supports+resilience+to&amp;btnG=&amp;oq=cortical+#d=gs_cit&amp;t=1717748727440&amp;u=%2Fscholar%3Fq%3Dinfo%3ACm01jgCqz7UJ%3Ascholar.google.com%2F%26output%3Dcite%26scirp%3D0%26hl%3Den"><i class="fa-solid fa-quote-left"></i></a> - <a href="https://laurentperrinet.github.io/publication/ladret-23/"><i class="fa-solid fa-globe"></i></a> - <a href="https://www.biorxiv.org/content/10.1101/2021.03.30.437692v5"><i class="ai ai-biorxiv"></i></a></p>
 <h1 id="tldr">TL;DR</h1>
-<p>Connections between neighbouring cortical neurons endows neural networks with the ability to compute the variance of a sensory input. This is crucial to support Bayesian computations in the brain.</p>
+<p>Connections between neighboring cortical neurons allow neural networks to compute variance of sensory input. <br>
+Crucial for Bayesian computations in the brain.</p>
 <h1 id="context">Context</h1>
-<p>Imagine yourself hiking through a forest. The wind rustles through the leaves, when suddenly a strange noise catches your attention. Did it come from a squirrel scurrying along the path in plain sight ? Or perhaps a bird nestling behind the bushes, hidden behind foilage ? In the latter case, do you take the extra time to see the bird, or infer that the rustling is rather that of a lion, and run away as fast as possible ?</p>
-<p>This simple and rather silly scenario showcases a daily problem that we as human are facing: how can our brain make sense of the world, when our senses are bombarded with unreliable information ?</p>
-<p>This unreliability - the inverse of the variance of an information - is constant when it comes to vision. Indeed, an image can be broken down into numerous lines or &ldquo;edges&rdquo; that form its structure, similar to how a puzzle is made up of many different pieces.</p>
+<p>Imagine hiking through a forest. Wind rustles leaves. Strange noise catches your attention. Squirrel ? Bird ? Lion ? Wait for instagram picture, or flee for survival ? Daily problem: making sense of unreliable sensory input.</p>
+<p>This unreliability: inverse of information variance. Constant problem in vision. Images: numerous lines, &ldquo;edges,&rdquo; like puzzle pieces.</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_1.png" alt="Decomposition of natural images"></p>
-<p>However, not all pieces of the puzzles are cut equal, and some have more variables edges than others. This is a problem for the very first area of our brain that starts to make sense of these visual &ldquo;puzzle pieces&rdquo;, the primary visual cortex. Until recently, our understanding of how the brain handles these complex visual inputs was largely based on observing human behavior [1,2].</p>
-<p>In recent years, however, researchers began probing the primary visual cortex of macaques, discovering that this area of the brain exhibits complex behaviors that mirror the intricate decision-making processes we humans undertake [3].</p>
+<p>Puzzle pieces vary. Problem for the primary visual cortex. Human behavior known to take uncertainty as a decision factor [1,2].</p>
+<p>Recent research: showed uncertainty-dependent activity in macaque primary visual cortex. Complex responses, mirroring human decision-making [3]. <br>
+Why and how responses exists ? Only theories until this paper.</p>
 <h1 id="method">Method</h1>
-<p>For our current research, we decided to dive deep into this &ldquo;visual puzzle&rdquo; by examining neurons in the primary visual cortex and constructing a comprehensive model of how they interact. We used a type of visual stimuli, Motion Clouds, which nicely imitates the complexity of natural images [4].</p>
+<p>Our research: examine neurons in primary visual cortex. Construct comprehensive interaction model. Visual stimuli: Motion Clouds, mimic natural image complexity [4].</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_2.png" alt="Article Figure 1"></p>
-<h1 id="results--single-neurons">Results : single neurons</h1>
-<p>We discovered an interesting phenomenon: the neurons in our primary visual cortex have distinct responses to the complexity of images. We identified two main types of neurons based on their responses: some were fairly unmoved by increased variance (flat), while others showed quick decay in face of it (non-linear).</p>
+<h1 id="results-single-neurons">Results: single neurons</h1>
+<p>Discovered phenomenon: neurons in primary visual cortex respond distinctly to image uncertainty. Two main types: &ldquo;flat&rdquo; (unchanged by increased variance), &ldquo;non-linear&rdquo; (response quickly destroyed by increased variance).</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_3.png" alt="Article Figure 2"></p>
-<p>Moreover, these two groups of neurons exhibited different timings. The &ldquo;flat&rdquo; neurons took more time to respond, while the &ldquo;non-linear&rdquo; neurons responded more quickly.</p>
+<p>Different timings: &ldquo;flat&rdquo; neurons respond slowly, &ldquo;non-linear&rdquo; neurons respond quickly.</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_4.png" alt="Article Figure 3"></p>
-<p>We labeled these two groups as &ldquo;resilient&rdquo; and &ldquo;vulnerable&rdquo;, and clustered them based on a range of different neural metrics.</p>
-<h1 id="results--population-of-neurons">Results : population of neurons</h1>
-<p>The next question was: what exactly do these different neurons do? To figure this out, we used a method called neural decoding, which tries to guess what the neurons are &ldquo;seeing&rdquo; based on their responses.</p>
+<p>Labeled groups: &ldquo;flat = &ldquo;resilient&rdquo; as opposed to &ldquo;non-linear&rdquo; = &ldquo;vulnerable,&rdquo; clustered based on neural metrics.</p>
+<h1 id="results-population-of-neurons">Results: population of neurons</h1>
+<p>Next question: what do these neurons do? Used neural decoding: guess neurons&rsquo; &ldquo;seeing&rdquo; based on responses.</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_6.png" alt="Neural Decoding"></p>
-<p>Interestingly, both resilient and vulnerable neurons did a good job at guessing the average orientation of the visual input.</p>
+<p>Both resilient and vulnerable neurons guessed average orientation well.</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_7.png" alt="Article Figure 5"></p>
-<p>However, when it came to both the average orientation and complexity of the image, the resilient neurons performed much better than their vulnerable counterpart.</p>
+<p>Resilient neurons excelled in guessing both average orientation and complexity. Not vulnerable.</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_8.png" alt="Article Figure 6"></p>
-<p>These specific neurons were found in different layers of the cortex, which connect to other parts of the cortex in different ways. This provided an anatomical basis for the existence of the two groups of neurons.</p>
+<p>Specific neurons found in different cortex layers, connecting differently. Provided anatomical basis for two neuron groups.</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_9.png" alt="Cortical Anatomy"></p>
-<h1 id="results--model">Results : model</h1>
-<p>We simulated this differential anatomical basis phenomenon using a computer model and found that by tweaking the amount of &ldquo;recurrence&rdquo; (the way neurons connect and influence each other), we could mimic the behavior of both resilient and vulnerable neurons.</p>
+<h1 id="results-model">Results: model</h1>
+<p>Simulated differential anatomical basis using a computer model. Tweaking &ldquo;recurrence&rdquo; mimicked behavior of resilient and vulnerable neurons.</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_10.png" alt="Article Figure 7"></p>
 <h1 id="overall">Overall</h1>
-<p>Overall, recurrence can explain how different neurons encode (or not) the variance of their input. Our findings support a more complete understanding of the brain, which doesn&rsquo;t just encode average features, like previous models suggested, but also takes into account the complexity of the inputs, thanks to the connectivity between neurons.</p>
+<p>Recurrence explains how neurons encode (or not) input variance. Findings support understanding of brain encoding complexity, not just average features, thanks to neuronal connectivity.</p>
 <p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_variance_V1_11.png" alt="Article Figure 8"></p>
 <h1 id="relevance">Relevance</h1>
-<p>This is a crucial step in understanding how our cortex manages the &ldquo;visual puzzles&rdquo; we encounter every day, allowing the brain to perform complex calculations on probabilistic distributions - a model that&rsquo;s gaining more popularity in neuroscience [5].</p>
+<p>Crucial step in understanding how cortex handles &ldquo;visual puzzles.&rdquo; Allows brain to perform complex probabilistic computations. Model gaining popularity in neuroscience [5].</p>
 <h1 id="references">References</h1>
 <p>[1] Von Helmholtz, H. (1925). Helmholtz&rsquo;s treatise on physiological optics (Vol. 3). Optical Society of America.</p>
 <p>[2] Barthelmé, S., &amp; Mamassian, P. (2009). Evaluation of objective uncertainty in the visual system. PLoS computational biology, 5(9), e1000504.</p>
@@ -93,7 +94,8 @@
 <p>[4] Leon, P. S., Vanzetta, I., Masson, G. S., &amp; Perrinet, L. U. (2012). Motion clouds: model-based stimulus synthesis of natural-like random textures for the study of motion perception. Journal of neurophysiology, 107(11), 3217-3226.</p>
 <p>[5] Spratling, M. W. (2016). A neural implementation of Bayesian inference based on predictive coding. Connection Science, 28(4), 346-383.</p>
 <h1 id="on-a-personal-note">On a personal note</h1>
-<p>This was my very first first-authored peer-reviewed paper ! It was one very long adventure - I started doing recordings back in 2020, before COVID-19 was even a thing - and wrote 4 versions of the paper from scratch. I&rsquo;m very grateful to the reviewers and the editors at Nat. Com. Bio. for having given us the chance to publish with them.</p>
+<p>First first-authored peer-reviewed paper !! <br>
+Very long adventure — experiments started in 2020, pre-COVID-19. Wrote 4 versions of paper from scratch. Grateful to reviewers, editors at Nat. Com. Bio. for publishing opportunity.</p>
     </div>
     <footer class="content__footer"></footer>
 
@@ -104,12 +106,7 @@
 <div class="aside__about">
     <img class="about__logo" src="https://hugoladret.github.io/images/brain.svg" alt="Logo">
 <h1 class="about__title">Hugo Ladret</h1>
-<p class="about__description"><p>PhD Student
-computational neuroscience + vision</p>
-<p><i class="fa-solid fa-map-location-dot"></i> <a href="https://www.int.univ-amu.fr/recherche/equipes/neopto-2">Marseille</a>
-+
-<a href="https://www.opto.umontreal.ca/neurosciences/en/index.html">Montreal</a></p>
-</p>
+<p class="about__description">Postdoctoral researcher Neuroscience <i class="fa-solid fa-map-location-dot"></i> <a href="https://www.apredictiveprocessinglab.org/">Basel</a></p>
 </div>
 
 
@@ -138,7 +135,7 @@ computational neuroscience + vision</p>
     <p>Ladret et al. 2023</p>
     
         <p>
-            By &gt;Hugo Ladret&lt;, Nelson Cortes, Lamyae Ikan, Frederic Chavane, Christian Casanova, Laurent U Perrinet, 
+            By Hugo Ladret, Nelson Cortes, Lamyae Ikan, Frederic Chavane, Christian Casanova, Laurent Perrinet, 
             2023-06-01
         </p>
     
@@ -160,6 +157,17 @@ computational neuroscience + vision</p>
       
     
     
+    
+      
+      
+          
+            
+            
+                <br/><span class="active">$ echo $LANG<br/><b></b></span><br/>
+
+            
+          
+      
     
 </p>
 <br /><br />
