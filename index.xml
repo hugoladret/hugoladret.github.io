@@ -1,77 +1,97 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Hugo Ladret&#39;s scientific ramblings</title>
+    <title>A blog about scientific shenanigans</title>
     <link>https://hugoladret.github.io/</link>
-    <description>Recent content on Hugo Ladret&#39;s scientific ramblings</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content on A blog about scientific shenanigans</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© 2023 [Hugo Ladret](http://hugoladret.github.io)</copyright>
-    <lastBuildDate>Thu, 01 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://hugoladret.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://hugoladret.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Cortical recurrence supports resilience to sensory variance in the primary visual cortex</title>
+      <title>[model] Information cost of two prediction error streams</title>
+      <link>https://hugoladret.github.io/post/pe_metabolism/</link>
+      <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/post/pe_metabolism/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>[model] Some maths behind PC under FEP</title>
+      <link>https://hugoladret.github.io/post/fep_maths/</link>
+      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/post/fep_maths/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>[code] Enabling LaTeX on a Hugo website</title>
+      <link>https://hugoladret.github.io/post/enabling_latex/</link>
+      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/post/enabling_latex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>[misc] PhD defended !</title>
+      <link>https://hugoladret.github.io/post/phd_defended/</link>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/post/phd_defended/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>[2024] [model] -- Kernel heterogeneity improves sparseness of natural images representations</title>
+      <link>https://hugoladret.github.io/publications/ladret_et_al_sparsecoding/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/publications/ladret_et_al_sparsecoding/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://hugoladret.github.io/publications/ladret_et_al_sparsecoding.pdf&#34;&gt;&lt;i class=&#34;fa-solid fa-file-pdf&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://arxiv.org/abs/2312.14685&#34;&gt;&lt;i class=&#34;fa-solid fa-globe&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>[2023] [review] -- The pulvinar as a hub of visual processing and cortical integration</title>
+      <link>https://hugoladret.github.io/publications/cortes_et_al_review/</link>
+      <pubDate>Sat, 23 Dec 2023 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/publications/cortes_et_al_review/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.cell.com/trends/neurosciences/fulltext/S0166-2236(23)00270-9&#34;&gt;&lt;i class=&#34;fa-solid fa-book&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://hugoladret.github.io/publications/cortes_et_al_review.pdf&#34;&gt;&lt;i class=&#34;fa-solid fa-file-pdf&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=the+pulvinar+as+a+hub+of+visual+processing&amp;amp;oq=the+pulv#d=gs_cit&amp;amp;t=1717748135947&amp;amp;u=%2Fscholar%3Fq%3Dinfo%3AzGnPca2BELEJ%3Ascholar.google.com%2F%26output%3Dcite%26scirp%3D1%26hl%3Dfr&#34;&gt;&lt;i class=&#34;fa-solid fa-quote-left&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>[2023] [model] [data] -- Cortical recurrence supports resilience to sensory variance in the primary visual cortex</title>
       <link>https://hugoladret.github.io/publications/ladret_et_al_variance_v1/</link>
       <pubDate>Thu, 01 Jun 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://hugoladret.github.io/publications/ladret_et_al_variance_v1/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://hugoladret.github.io/publications/ladret_et_al_variance_V1.pdf&#34;&gt;&lt;i class=&#34;fa-solid fa-file-pdf&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://scholar.googleusercontent.com/scholar.bib?q=info:Ct1RvT8fLUYJ:scholar.google.com/&amp;amp;output=citation&amp;amp;scisdr=CgUKAuoEEOK9kuLT8BM:AAGBfm0AAAAAZBnW6BPlookfQHl0B6kWjvJ5eZ4wCVTg&amp;amp;scisig=AAGBfm0AAAAAZBnW6IHotqOgsEUd--ShUD7ZISMhaOsH&amp;amp;scisf=4&amp;amp;ct=citation&amp;amp;cd=-1&amp;amp;hl=fr&#34;&gt;&lt;i class=&#34;fa-solid fa-quote-left&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://www.biorxiv.org/content/10.1101/2021.03.30.437692v5&#34;&gt;&lt;i class=&#34;ai ai-biorxiv&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.nature.com/articles/s42003-023-05042-3&#34;&gt;&lt;i class=&#34;fa-solid fa-newspaper&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://hugoladret.github.io/publications/ladret_et_al_variance_V1.pdf&#34;&gt;&lt;i class=&#34;fa-solid fa-file-pdf&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=cortical+recurrence+supports+resilience+to&amp;amp;btnG=&amp;amp;oq=cortical+#d=gs_cit&amp;amp;t=1717748727440&amp;amp;u=%2Fscholar%3Fq%3Dinfo%3ACm01jgCqz7UJ%3Ascholar.google.com%2F%26output%3Dcite%26scirp%3D0%26hl%3Den&#34;&gt;&lt;i class=&#34;fa-solid fa-quote-left&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://laurentperrinet.github.io/publication/ladret-23/&#34;&gt;&lt;i class=&#34;fa-solid fa-globe&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://www.biorxiv.org/content/10.1101/2021.03.30.437692v5&#34;&gt;&lt;i class=&#34;ai ai-biorxiv&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
-      <title>Extracting data from Blackrock files in Python #ephys #code</title>
+      <title>[ephys] [code] Extracting data from Blackrock files in Python</title>
       <link>https://hugoladret.github.io/post/blackrock_neo_python/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://hugoladret.github.io/post/blackrock_neo_python/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Getting single neurons with Utah arrays in V1 #ephys #code</title>
+      <title>[ephys] [code] Getting single neurons with Utah arrays in V1</title>
       <link>https://hugoladret.github.io/post/sua_ks3/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://hugoladret.github.io/post/sua_ks3/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>SUA vs MUA #ephys #bibliography</title>
+      <title>[ephys] [biblio] SUA vs MUA</title>
       <link>https://hugoladret.github.io/post/sua_vs_mua/</link>
       <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://hugoladret.github.io/post/sua_vs_mua/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>We have liftoff ! #misc</title>
-      <link>https://hugoladret.github.io/post/liftoff/</link>
-      <pubDate>Tue, 04 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://hugoladret.github.io/post/liftoff/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Corticothalamic Projections Gate Alpha Rhythms in the Pulvinar</title>
+      <title>[2021] [model] -- Corticothalamic Projections Gate Alpha Rhythms in the Pulvinar</title>
       <link>https://hugoladret.github.io/publications/cortes_et_al_pulvinar/</link>
       <pubDate>Mon, 06 Dec 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://hugoladret.github.io/publications/cortes_et_al_pulvinar/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fncel.2021.787170/full&#34;&gt;&lt;i class=&#34;fa-solid fa-book&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://hugoladret.github.io/publications/cortes_et_al_pulvinar.pdf&#34;&gt;&lt;i class=&#34;fa-solid fa-file-pdf&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://scholar.googleusercontent.com/scholar.bib?q=info:2rWuhDabRecJ:scholar.google.com/&amp;amp;output=citation&amp;amp;scisdr=CgUKAuoEEOK9kuLcTUA:AAGBfm0AAAAAZBnZVUBkRbCvg2xAo80_7651biNTTXmq&amp;amp;scisig=AAGBfm0AAAAAZBnZVWxcvy0mz_lUiJM_cNQ6rhQTTgEy&amp;amp;scisf=4&amp;amp;ct=citation&amp;amp;cd=-1&amp;amp;hl=fr&#34;&gt;&lt;i class=&#34;fa-solid fa-quote-left&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://www.biorxiv.org/content/10.1101/2021.09.10.459796v1&#34;&gt;&lt;i class=&#34;ai ai-biorxiv&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fncel.2021.787170/full&#34;&gt;&lt;i class=&#34;fa-solid fa-book&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://hugoladret.github.io/publications/cortes_et_al_pulvinar.pdf&#34;&gt;&lt;i class=&#34;fa-solid fa-file-pdf&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://scholar.google.com/scholar?hl=en&amp;amp;as_sdt=0%2C5&amp;amp;q=pulvinar+gates+alpha&amp;amp;btnG=#d=gs_cit&amp;amp;t=1717748666778&amp;amp;u=%2Fscholar%3Fq%3Dinfo%3A2rWuhDabRecJ%3Ascholar.google.com%2F%26output%3Dcite%26scirp%3D0%26hl%3Dfr&#34;&gt;&lt;i class=&#34;fa-solid fa-quote-left&#34;&gt;&lt;/i&gt;&lt;/a&gt; - &lt;a href=&#34;https://www.biorxiv.org/content/10.1101/2021.09.10.459796v1&#34;&gt;&lt;i class=&#34;ai ai-biorxiv&#34;&gt;&lt;/i&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Hi !</title>
       <link>https://hugoladret.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://hugoladret.github.io/about/</guid>
-      <description>Thanks for stopping by my corner of the Internet.
-Who am I ? I&amp;rsquo;m Hugo, a PhD student researching predictive coding, an influential brain theory that promises to account for the many seemingly disparate results neuroscientists have gathered over decades of experiments.
-I&amp;rsquo;m a neurobiologist by training, but I believe no good science can be done without a theory-driven approach. My experimental work is mostly about vision, while my theoreotical interests are about anything neural network-related.</description>
+      <description>Thank you for visiting this corner of the Internet !&#xA;The website Goal here is to efficiently share serious thoughts, in informal tone. Writing in this concise style helps :-) Also an ideal format to share short tutorials on things that perplexed me. Also useful to dump random assortment of thoughts.&#xA;Most importantly, convenient platform to host open-access PDFs.&#xA;The author Hugo here. Postdoctoral researcher, focused on predictive coding - a promising brain theory that might explain decades of seemingly disparate results in neuroscience.</description>
     </item>
-    
   </channel>
 </rss>

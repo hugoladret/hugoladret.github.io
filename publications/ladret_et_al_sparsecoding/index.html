@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head><title>[2024] [model] -- Kernel heterogeneity improves sparseness of natural images representations &ndash; A blog about scientific shenanigans</title>
+<meta name="description" content="Postdoctoral researcher Neuroscience &lt;i class=&#34;fa-solid fa-map-location-dot&#34;&gt;&lt;/i&gt; [Basel](https://www.apredictiveprocessinglab.org/)">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8"/>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.1/css/academicons.min.css" integrity="sha512-b1ASx0WHgVFL5ZQhTgiPWX+68KjS38Jk87jg7pe+qC7q9YkEtFq0z7xCglv7qGIs/68d3mAp+StfC8WKC5SSAg==" crossorigin="anonymous" />
+
+
+<link rel="stylesheet" href="https://hugoladret.github.io/css/palettes/base16-dark.css">
+<link rel="stylesheet" href="https://hugoladret.github.io/css/risotto.css">
+<link rel="stylesheet" href="https://hugoladret.github.io/css/custom.css">
+
+
+<script type="text/javascript" src="/js/mathjax-config.js"></script>
+<script type="text/javascript" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+
+    <body>
+        <div class="page">
+
+            <header class="page__header"><h1 class="page__logo"><a href="https://hugoladret.github.io/" class="page__logo-inner">A blog about scientific shenanigans</a></h1>
+<nav class="page__nav main-nav">
+    <ul>
+    
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://hugoladret.github.io/about/" title="">./About</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item active" href="https://hugoladret.github.io/publications/" title="./papers/">./papers/</a></li>
+    
+    <li class="main-nav__item"><a class="nav-main-item" href="https://hugoladret.github.io/post/" title="./posts/">./posts/</a></li>
+    
+    </ul>
+</nav>
+
+</header>
+
+            <section class="page__body">
+    <header class="content__header">
+        <h1>[2024] [model] &ndash; Kernel heterogeneity improves sparseness of natural images representations</h1>
+    </header>
+    <div class="content__body">
+        <ul>
+<li><a href="https://hugoladret.github.io/publications/ladret_et_al_sparsecoding.pdf"><i class="fa-solid fa-file-pdf"></i></a> - <a href="https://arxiv.org/abs/2312.14685"><i class="fa-solid fa-globe"></i></a></li>
+</ul>
+<h1 id="tldr">TL;DR</h1>
+<p>How to sample variance ? Same as with mean, sample it heterogeneously = better deep neural networks for free.</p>
+<h1 id="context">Context</h1>
+<p>Learning representations of the world is learning about a continuum of values on an arbitrary space.</p>
+<p>Learning images = learning representations of light (spaces = luminosity, contrast, colors, &hellip;)
+Learning sound = learning representation of air compression (spaces = frequency, amplitude, &hellip;)</p>
+<p>If learning how to represent MNIST images, sampling every luminosity point is OK. Low number of pixels, low complexity problem.<br>
+This is sampling mean of distribution.</p>
+<p>If learning how to representation real images, sampling mean of distribution not possible.<br>
+Complex distributions, mean is meaningless.</p>
+<p>Solution one (top image below) : sample lots of mean. Precise but costly.<br>
+If representations ends up being same size as input, process useless.</p>
+<p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_sparsecoding_1.png" alt="Sampling of natural images"></p>
+<p>Solution two (bottom image above) : sample mean, describe succintly variance around it. Approximative, but efficient.<br>
+Useful, also gives idea of how much one bit of information varies with respect to others.</p>
+<h1 id="natural-images">Natural images</h1>
+<p>For the problem of natural images, sampling variance very useful. Stereotypical pattern of distribution of orientations.</p>
+<p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_sparsecoding_2.png" alt="Sampling of natural images"></p>
+<h1 id="learning-from-this">Learning from this</h1>
+<p>If one tries to make models of these images (here, sparse coding), good models also get this distribution of orientations.</p>
+<p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_sparsecoding_3.png" alt="Sampling of natural images"></p>
+<p>Logical step : already give this distribution to the models. Save them time from figuring it out.<br>
+5 scenarii :</p>
+<ul>
+<li>green = sample only mean (same uncertainty/variance sampling in the model)</li>
+<li>blue = sample mean and variance (heterogeneous variance sampling)</li>
+<li>orange = green + fine tuning on dataset</li>
+<li>purple = blue + fine tuning on dataset</li>
+<li>black = let the model learn everything (fine tuning on the dataset, without any intervention)</li>
+</ul>
+<p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_sparsecoding_4.png" alt="Sampling of natural images"></p>
+<p>Learning always gives best representation quality (Peak Signal to Noise Ratio, PSNR) and efficiency (sparseness).<br>
+Without learning, sampling variance massively boosts sparseness. Slight cost in quality.</p>
+<p>Learning = finding the best of both worlds ! Simple task of reconstruction, no big difference.</p>
+<p>Complex task ? Put that into a deep neural network that classifies images.</p>
+<p><img src="https://hugoladret.github.io/publications/imgs/ladret_et_al_sparsecoding_5.png" alt="Sampling of natural images"></p>
+<p>Sampling variance (last row, first column) much better for representations.</p>
+<p>Sampling variance (last row, second and third column) also much, much better than others methods when facing noise.<br>
+Here, cutting off a fraction of the coefficients (25% or 50%) does not significantly hinder the model. Performance collapses for other.</p>
+<h1 id="relevance">Relevance</h1>
+<p>In previous paper (<a href="https://hugoladret.github.io/publications/ladret_et_al_variance_V1/">Cortical recurrence something something sensory variance</a>), showed that neurons in actual brain compute variance.<br>
+Here, showed that this computation is very useful. Namely, prevents models from failing when facing noise. Important for brain, noisy machines !</p>
+<p>Full code in PyTorch - seamlessly integrate this into any deep neural network !</p>
+<h1 id="on-a-personal-note">On a personal note</h1>
+<p>Talked myself into buying a new GPU for this paper.<br>
+Now mostly used for Cyberpunk 2077, rather than PyTorch.</p>
+    </div>
+    <footer class="content__footer"></footer>
+
+            </section>
+
+            <section class="page__aside">
+                <div class="aside__about">
+<div class="aside__about">
+    <img class="about__logo" src="https://hugoladret.github.io/images/brain.svg" alt="Logo">
+<h1 class="about__title">Hugo Ladret</h1>
+<p class="about__description">Postdoctoral researcher Neuroscience <i class="fa-solid fa-map-location-dot"></i> <a href="https://www.apredictiveprocessinglab.org/">Basel</a></p>
+</div>
+
+
+<ul class="aside__social-links">
+    
+    <li>
+        <a href="https://github.com/hugoladret/" rel="me" aria-label="GitHub" title="GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://orcid.org/0000-0001-7999-3751" rel="me" aria-label="ORCID" title="ORCID"><i class="ai ai-orcid" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://scholar.google.com/citations?user=n6dvyjwAAAAJ&amp;hl=en&amp;oi=ao" rel="me" aria-label="Google Scholar" title="Google Scholar"><i class="ai ai-google-scholar" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+    <li>
+        <a href="https://twitter.com/hugoladret/" rel="me" aria-label="Twitter " title="Twitter "><i class="fa-brands fa-twitter" aria-hidden="true"></i></a>&nbsp;
+    </li>
+    
+</ul>
+</div>
+                <hr>
+                <div class="aside__content">
+    <p>Ladret et al. 2024</p>
+    
+        <p>
+            By Hugo Ladret, Christian Casanova, Laurent Perrinet, 
+            2024-01-01
+        </p>
+    
+
+                </div>
+            </section>
+
+            <footer class="page__footer"><p>
+    
+    
+    
+    
+    
+    
+      
+    
+      
+    
+      
+    
+    
+    
+      
+      
+          
+            
+            
+                <br/><span class="active">$ echo $LANG<br/><b></b></span><br/>
+
+            
+          
+      
+    
+</p>
+<br /><br />
+<p class="copyright">© 2023 <a href="http://hugoladret.github.io">Hugo Ladret</a></p>
+<p class="advertisement">Powered by <a href="https://gohugo.io/">hugo</a> and <a href="https://github.com/joeroe/risotto">risotto</a>.</p>
+</footer>
+
+        </div>
+    </body>
+
+</html>

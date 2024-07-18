@@ -3,16 +3,40 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://hugoladret.github.io/</loc>
-    <lastmod>2023-06-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugoladret.github.io/post/</loc>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugoladret.github.io/post/pe_metabolism/</loc>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugoladret.github.io/tags/index/</loc>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugoladret.github.io/tags/</loc>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugoladret.github.io/post/fep_maths/</loc>
+    <lastmod>2024-06-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugoladret.github.io/post/enabling_latex/</loc>
+    <lastmod>2024-06-09T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugoladret.github.io/post/phd_defended/</loc>
+    <lastmod>2024-02-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugoladret.github.io/publications/</loc>
-    <lastmod>2023-06-01T00:00:00+00:00</lastmod>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugoladret.github.io/publications/ladret_et_al_sparsecoding/</loc>
+    <lastmod>2024-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://hugoladret.github.io/publications/cortes_et_al_review/</loc>
+    <lastmod>2023-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugoladret.github.io/publications/ladret_et_al_variance_v1/</loc>
     <lastmod>2023-06-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://hugoladret.github.io/post/</loc>
-    <lastmod>2023-04-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugoladret.github.io/post/blackrock_neo_python/</loc>
     <lastmod>2023-04-17T00:00:00+00:00</lastmod>
@@ -23,9 +47,6 @@
     <loc>https://hugoladret.github.io/post/sua_vs_mua/</loc>
     <lastmod>2023-04-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hugoladret.github.io/post/liftoff/</loc>
-    <lastmod>2023-04-04T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://hugoladret.github.io/publications/cortes_et_al_pulvinar/</loc>
     <lastmod>2021-12-06T00:00:00+00:00</lastmod>
   </url><url>
@@ -33,10 +54,6 @@
   </url><url>
     <loc>https://hugoladret.github.io/about/</loc>
   </url><url>
-    <loc>https://hugoladret.github.io/tags/index/</loc>
-  </url><url>
     <loc>https://hugoladret.github.io/series/</loc>
-  </url><url>
-    <loc>https://hugoladret.github.io/tags/</loc>
   </url>
 </urlset>

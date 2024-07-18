@@ -1,48 +1,62 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>./posts/ on Hugo Ladret&#39;s scientific ramblings</title>
+    <title>./posts/ on A blog about scientific shenanigans</title>
     <link>https://hugoladret.github.io/post/</link>
-    <description>Recent content in ./posts/ on Hugo Ladret&#39;s scientific ramblings</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in ./posts/ on A blog about scientific shenanigans</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>© 2023 [Hugo Ladret](http://hugoladret.github.io)</copyright>
-    <lastBuildDate>Mon, 17 Apr 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://hugoladret.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://hugoladret.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Extracting data from Blackrock files in Python #ephys #code</title>
+      <title>[model] Information cost of two prediction error streams</title>
+      <link>https://hugoladret.github.io/post/pe_metabolism/</link>
+      <pubDate>Thu, 18 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/post/pe_metabolism/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>[model] Some maths behind PC under FEP</title>
+      <link>https://hugoladret.github.io/post/fep_maths/</link>
+      <pubDate>Mon, 24 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/post/fep_maths/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>[code] Enabling LaTeX on a Hugo website</title>
+      <link>https://hugoladret.github.io/post/enabling_latex/</link>
+      <pubDate>Sun, 09 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/post/enabling_latex/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>[misc] PhD defended !</title>
+      <link>https://hugoladret.github.io/post/phd_defended/</link>
+      <pubDate>Sat, 10 Feb 2024 00:00:00 +0000</pubDate>
+      <guid>https://hugoladret.github.io/post/phd_defended/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>[ephys] [code] Extracting data from Blackrock files in Python</title>
       <link>https://hugoladret.github.io/post/blackrock_neo_python/</link>
       <pubDate>Mon, 17 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://hugoladret.github.io/post/blackrock_neo_python/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Getting single neurons with Utah arrays in V1 #ephys #code</title>
+      <title>[ephys] [code] Getting single neurons with Utah arrays in V1</title>
       <link>https://hugoladret.github.io/post/sua_ks3/</link>
       <pubDate>Sun, 16 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://hugoladret.github.io/post/sua_ks3/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>SUA vs MUA #ephys #bibliography</title>
+      <title>[ephys] [biblio] SUA vs MUA</title>
       <link>https://hugoladret.github.io/post/sua_vs_mua/</link>
       <pubDate>Fri, 14 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://hugoladret.github.io/post/sua_vs_mua/</guid>
       <description></description>
     </item>
-    
-    <item>
-      <title>We have liftoff ! #misc</title>
-      <link>https://hugoladret.github.io/post/liftoff/</link>
-      <pubDate>Tue, 04 Apr 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://hugoladret.github.io/post/liftoff/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
